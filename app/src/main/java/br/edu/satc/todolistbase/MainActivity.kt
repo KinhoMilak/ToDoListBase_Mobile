@@ -34,8 +34,11 @@ class MainActivity : AppCompatActivity() {
             // Inclusao fake. Add um item na lista
             // cria o item
             val item = ToDoItem(
-                toDoItemList.size,
-                "Item de teste ${toDoItemList.size + 1}"
+                null,
+                "titulo",
+                "Item de teste ${toDoItemList.size + 1}",
+                false
+
             )
 
             // add o item na lista
@@ -94,9 +97,13 @@ class MainActivity : AppCompatActivity() {
         val itemOnClick: (Int, ToDoItem) -> Unit = { position, item ->
             Log.d(TAG, "Click pos: $position | desc: ${item.description}")
         }
+        // Prepara nosso método de click em um item da lista
+        val itemOnChecked: (Boolean, ToDoItem) -> Unit = { isChecked, item ->
+            Log.d(TAG, "Click pos: $isChecked | desc: ${item.description}")
+        }
 
         // Instancia o adapter passando a lista e o método que será disparado no click de item
-        toDoItemAdapter = ToDoItemAdapter(toDoItemList, itemOnClick)
+        toDoItemAdapter = ToDoItemAdapter(toDoItemList, itemOnClick,itemOnChecked)
 
         // Informa nosso recycler view qual adapter irá cuidar de seus dados
         rv.adapter = toDoItemAdapter

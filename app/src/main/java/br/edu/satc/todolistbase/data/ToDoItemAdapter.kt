@@ -1,9 +1,9 @@
 package br.edu.satc.todolistbase.data
 
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.satc.todolistbase.R
@@ -12,6 +12,7 @@ import br.edu.satc.todolistbase.roomdatabase.ToDoItem
 class ToDoItemAdapter (
     private val dataSet: ArrayList<ToDoItem>,
     private val itemOnClick: (Int, ToDoItem) -> Unit,
+    private val itemOnchecked: (Boolean, ToDoItem) -> Unit,
 ) : RecyclerView.Adapter<ToDoItemAdapter.ViewHolder>() {
 
     /**
@@ -42,7 +43,12 @@ class ToDoItemAdapter (
 
         // Preenchemos os dados desse item na tela
         holder.tvDescription.text = toDoItem.description
+        holder.tvtitle.text = toDoItem.title
+        holder.cbComplete.isChecked = toDoItem.complete == true
 
+        holder.cbComplete.setOnCheckedChangeListener { buttonView, isChecked ->
+            itemOnchecked(isChecked,toDoItem)
+        }
         // Declaramos um listener para pegarmos o evento de click na lista
         holder.itemView.setOnClickListener {
             /**
@@ -72,9 +78,13 @@ class ToDoItemAdapter (
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var tvDescription: TextView
+        var tvtitle:TextView
+        var cbComplete: CheckBox
 
         init {
             tvDescription = view.findViewById(R.id.tv_description)
+            tvtitle = view.findViewById(R.id.tv_title)
+            cbComplete = view.findViewById(R.id.cb_complete)
         }
     }
 }
