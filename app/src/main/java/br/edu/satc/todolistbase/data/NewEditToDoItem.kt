@@ -29,8 +29,8 @@ class NewEditToDoItem : AppCompatActivity() {
     }
 
     private fun loadData() {
-        toDoItemList.clear()
-        toDoItemList.addAll(db.toDoItemList)
+       // ToDoItem.clear()
+       // ToDoItem.addAll(db.toDoItemList)
     }
 
     private fun save(){
