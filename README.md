@@ -4,3 +4,4 @@ O projeto base contém
   - Implementação completa de uma Recycler View com Adapter e View Holder.
   - Implementação de persistência com SQLite usando Android ROOM database.
 
+Aluno : Joao Eduaro Milak Farias 
