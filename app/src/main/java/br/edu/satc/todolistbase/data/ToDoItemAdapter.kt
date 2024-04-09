@@ -39,7 +39,7 @@ class ToDoItemAdapter (
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         // Pegamos o item em nossa lista que deve ser "montado" nessa view
-        var toDoItem: ToDoItem = dataSet[position]
+        val toDoItem: ToDoItem = dataSet[position]
 
         // Preenchemos os dados desse item na tela
         holder.tvDescription.text = toDoItem.description
